@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Button } from "./ui/button";
 import { Heart, Menu, X } from "lucide-react";
 import { useState } from "react";
+import AuthNav from "../src/components/AuthNav";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,6 +15,7 @@ export function Navbar() {
     { name: "Games", href: "#games" },
     { name: "Support", href: "#support" },
     { name: "About", href: "#about" },
+    { name: "Research", href: "#research" },
   ];
 
   return (
@@ -65,21 +67,9 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center gap-3">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                variant="outline"
-                className="rounded-full border-2 border-purple-300 hover:bg-purple-50"
-              >
-                Sign In
-              </Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 text-white rounded-full shadow-lg">
-                Get Started
-              </Button>
-            </motion.div>
+          {/* Replace previous Login/Signup controls with AuthNav */}
+          <div style={{ marginLeft: "auto" }}>
+            <AuthNav />
           </div>
 
           {/* Mobile Menu Button */}

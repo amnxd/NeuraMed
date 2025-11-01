@@ -1,5 +1,8 @@
 import { motion } from "motion/react";
 import { Heart, Sparkles, Shield, Users, Zap, Globe } from "lucide-react";
+import CereSukhIframe from "./ai/CereSukhIframe";
+import CereSukhReact from "./ai/CereSukhReact";
+
 
 export function About() {
   const values = [
@@ -214,6 +217,9 @@ export function About() {
           </div>
         </motion.div>
       </div>
+
+      
+      <CereSukhReact />
     </section>
   );
 }
