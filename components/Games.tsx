@@ -6,31 +6,34 @@ import { Link } from "react-router-dom";
 
 const games = [
 	{
-		title: "Peaceful Puzzles",
-		description: "Calm your mind with relaxing jigsaw challenges",
+		title: "Sweet Candy Match",
+		description: "Match candies, score points, relax and enjoy!",
 		icon: Brain,
 		color: "from-purple-500 to-pink-500",
 		image:
-			"https://images.unsplash.com/photo-1701588362547-001aaf022089?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdXp6bGUlMjBnYW1lJTIwcmVsYXhpbmd8ZW58MXx8fHwxNzYxODQ5ODMyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+			"https://images.unsplash.com/photo-1701588362547-001aaf022089?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYW5keSUyMGNvbnl8ZW58MXx8fHwxNzYxODUwMDAwfDA&ixlib=rb-4.1.0&q=80&w=1080",
 		players: "12K",
+		href: "/games/candy-match",
 	},
 	{
-		title: "Breathing Focus",
-		description: "Interactive breathing timing game",
+		title: "Heal the Depressed Avatar",
+		description: "Choose wisely to lift the avatar’s mood and win!",
 		icon: Heart,
 		color: "from-emerald-500 to-teal-500",
 		image:
 			"https://images.unsplash.com/photo-1687436874174-977fdd9e2cb8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpdGF0aW9uJTIwcGVhY2VmdWwlMjB3ZWxsbmVzc3xlbnwxfHx8fDE3NjE3ODcxMDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-		players: "8K",
+		players: "9K",
+		href: "/games/heal-avatar",
 	},
 	{
-		title: "Mood Tracker Pro",
-		description: "Track and visualize your emotional journey",
+		title: "Word Puzzle Game",
+		description: "Pick letters to solve fun word riddles!",
 		icon: Smile,
 		color: "from-blue-500 to-cyan-500",
 		image:
-			"https://images.unsplash.com/photo-1687436874174-977fdd9e2cb8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpdGF0aW9uJTIwcGVhY2VmdWwlMjB3ZWxsbmVzc3xlbnwxfHx8fDE3NjE3ODcxMDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+			"https://images.unsplash.com/photo-1529070538774-1843cb3265df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b3JkJTIwcHV6emxlfGVufDF8fHx8MTc2MTg1MDAwMHww&ixlib=rb-4.1.0&q=80&w=1080",
 		players: "15K",
+		href: "/games/word-puzzle",
 	},
 ];
 
@@ -152,10 +155,13 @@ export function Games() {
 										whileHover={{ scale: 1.02 }}
 										whileTap={{ scale: 0.98 }}
 									>
-										<Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-full py-6 group/btn">
+										<Link
+											to={game.href}
+											className="w-full inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-full py-6 group/btn"
+										>
 											<Play className="w-5 h-5 mr-2 group-hover/btn:scale-110 transition-transform" />
 											Play Now
-										</Button>
+										</Link>
 									</motion.div>
 								</div>
 							</div>
@@ -253,52 +259,6 @@ export function Games() {
 						</p>
 					</motion.div>
 				</motion.div>
-
-				{/* Candy Match Card */}
-				<div className="mt-8 rounded-xl border bg-white shadow p-6 flex items-center justify-between">
-					<div>
-						<h3 className="text-xl font-semibold">Sweet Candy Match</h3>
-						<p className="text-gray-600">
-							Match candies, score points, relax and enjoy!
-						</p>
-					</div>
-					<Link
-						to="/games/candy-match"
-						className="px-4 py-2 rounded-md bg-pink-500 text-white font-semibold hover:bg-pink-600"
-					>
-						Play Now
-					</Link>
-				</div>
-
-				<div className="mt-4 rounded-xl border bg-white shadow p-6 flex items-center justify-between">
-					<div>
-						<h3 className="text-xl font-semibold">Heal the Depressed Avatar</h3>
-						<p className="text-gray-600">
-							Choose wisely to lift the avatar’s mood and win!
-						</p>
-					</div>
-					<Link
-						to="/games/heal-avatar"
-						className="px-4 py-2 rounded-md bg-purple-600 text-white font-semibold hover:bg-purple-700"
-					>
-						Play Now
-					</Link>
-				</div>
-
-				<div className="mt-4 rounded-xl border bg-white shadow p-6 flex items-center justify-between">
-					<div>
-						<h3 className="text-xl font-semibold">Word Puzzle Game</h3>
-						<p className="text-gray-600">
-							Pick letters to solve fun word riddles!
-						</p>
-					</div>
-					<Link
-						to="/games/word-puzzle"
-						className="px-4 py-2 rounded-md bg-amber-500 text-white font-semibold hover:bg-amber-600"
-					>
-						Play Now
-					</Link>
-				</div>
 			</div>
 		</section>
 	);
