@@ -1,8 +1,28 @@
 import { motion } from "motion/react";
 import { Button } from "./ui/button";
 import { ShoppingCart, Heart, Star, ArrowRight } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { useState } from "react";
+import React, { useState } from "react";
+
+// Inline fallback image to avoid external import resolution issues on CI
+const FallbackImg: React.FC<React.ImgHTMLAttributes<HTMLImageElement> & { fallbackSrc?: string }> = ({
+	fallbackSrc = "https://placehold.co/800x400?text=Image",
+	onError,
+	...props
+}) => {
+	const [errored, setErrored] = useState(false);
+	return (
+		<img
+			{...props}
+			onError={(e) => {
+				if (!errored) {
+					setErrored(true);
+					(e.currentTarget as HTMLImageElement).src = fallbackSrc!;
+				}
+				if (onError) onError(e);
+			}}
+		/>
+	);
+};
 
 const products = [
 	{
@@ -125,7 +145,7 @@ export function Shop() {
 						>
 							<div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-purple-100">
 								<div className="relative overflow-hidden aspect-square">
-									<ImageWithFallback
+									<FallbackImg
 										src={product.image}
 										alt={product.name}
 										className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
